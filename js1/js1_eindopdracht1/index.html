@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js1_eindopdracht1</title>
+    <!-- script -->
+    <script src="script.js"></script>
+</head>
+<body>
+    <div>
+        <h1>Heeft u last van ziekte klachten?</h1>
+        <!-- Invoer velden -->
+        <p>
+            Vul hier uw naam en leeftijd in.
+            <br>
+            Naam: <input type="text" id="naam" required>
+            <br>
+            Leeftijd: <input type="text" id="leeftijd" required>
+            <br>
+            Van welke symptomen heeft u last?
+            <br>
+            <input type="checkbox" name="hoofdpijn" id="hoofdpijn">
+            Hoofdpijn
+            <br>
+            <input type="checkbox" name="buikpijn" id="buikpijn">
+            Buikpijn
+            <br>
+            <input type="checkbox" name="keelpijn" id="keelpijn">
+            Keelpijn
+            <br>
+            <input type="checkbox" name="hoesten" id="hoesten">
+            Hoesten
+            <br>
+            <input type="checkbox" name="koorts" id="koorts">
+            Koorts
+            <br><br>
+            <!-- Knop om de Javascript functie aan te roepen. -->
+            <button onclick="checkGegevens()">Verstuur</button>
+            <br><br>
+            <!-- span waar het resultaat in komt te staan. -->
+            <p id="resultaat"></p>
+            <ul id="lijst"></ul>
+        </p>
+    </div>
+</body>
+</html>
