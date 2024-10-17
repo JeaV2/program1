@@ -6,9 +6,9 @@ p {
     line-height: 1.6;
 }
 
-input[type="text"] {
+input[type="range"] {
     display: block;
-    margin: 5px 0 15px 0;
+    /* margin: 5px 0 15px 0; */
     width: 25%;
     padding: 8px;
     box-sizing: border-box;

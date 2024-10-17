@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js1_eindopdracht2</title>
+    <!-- script -->
+    <script src="script.js" defer></script>
+    <!-- Een beetje simple CSS om het er een soort van goed uit te laten zien. -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h1>Je hebt 330 miljard euro om te verdelen over de Nederlandse ministeries.</h1>
+        <h4>Vul bij ieder ministerie een bedrag in en berken hoeveel geld je te kort komt of nog over hebt.</h4>
+        <p>1 staat gelijk aan 1 miljard euro</p>
+        <p>
+            <!-- De invoervelden -->
+            De Nederlandse ministeries.
+            <br>
+            Het ministerie van Algemene Zaken <input type="range" min="1" max="330" value="1" id="algemeneZaken">
+            <span id="valueAlgemeneZaken">1</span> Miljard euro
+            <br><br>
+            Het ministerie van Asiel en Migratie <input type="range" min="1" max="330" value="1" id="asiel">
+            <span id="valueAsiel">1</span> Miljard euro
+            <br><br>
+            Het ministerie van Binnenlandse Zaken en Koninkrijksrelaties <input type="range" min="1" max="330" value="1" id="binnenlandseZaken">
+            <span id="valueBinnenlandseZaken">1</span> Miljard euro
+            <br><br>
+            Het ministerie van Buitenlandse Zaken <input type="range" min="1" max="330" value="1" id="buitenlandseZaken">
+            <span id="valueBuitenlandseZaken">1</span> Miljard euro
+            <br><br>
+            Het ministerie van Defensie <input type="range" min="1" max="330" value="1" id="defensie">
+            <span id="valueDefensie">1</span> Miljard euro
+            <br><br>
+            Het ministerie van Economische Zaken <input type="range" min="1" max="330" value="1" id="economischeZaken">
+            <span id="valueEconomischeZaken">1</span> Miljard euro
+            <br><br>
+            Het ministerie van Financiën <input type="range" min="1" max="330" value="1" id="financien">
+            <span id="valueFinancien">1</span> Miljard euro
+            <br><br>
+            Het ministerie van Infrastructuur en Waterstaat <input type="range" min="1" max="330" value="1" id="infrastructuur">
+            <span id="valueInfrastructuur">1</span> Miljard euro
+            <br><br>
+            Het ministerie van Klimaat en Groene Groei <input type="range" min="1" max="330" value="1" id="klimaat">
+            <span id="valueKlimaat">1</span> Miljard euro
+            <br><br>
+            Het ministerie van Landbouw, Visserij, Voedselzekerheid en Natuur <input type="range" min="1" max="330" value="1" id="landbouw">
+            <span id="valueLandbouw">1</span> Miljard euro
+            <br><br>            
+            Het ministerie van Onderwijs, Cultuur en Wetenschap <input type="range" min="1" max="330" value="1" id="onderwijs">
+            <span id="valueOnderwijs">1</span> Miljard euro
+            <br><br>
+            Het ministerie van Sociale Zaken en Werkgelegenheid <input type="range" min="1" max="330" value="1" id="socialeZaken">
+            <span id="valueSocialeZaken">1</span> Miljard euro
+            <br><br>
+            Het ministerie van Justitie en Veiligheid <input type="range" min="1" max="330" value="1" id="justitie">
+            <span id="valueJustitie">1</span> Miljard euro
+            <br><br>
+            Het ministerie van Volkshuisvestingen Ruimtelijke Ordening <input type="range" min="1" max="330" value="1" id="volkshuisvesting">
+            <span id="valueVolkshuisvesting">1</span> Miljard euro
+            <br><br>
+            Het ministerie van Volksgezondheid, Welzijn en Sport <input type="range" min="1" max="330" value="1" id="volksgezondheid">
+            <span id="valueVolksgezondheid">1</span> Miljard euro
+            <br><br>
+            <br>            
+            <!-- Knop om de Javascript aan te roepen. -->
+            <button onclick="bereken()">Bereken</button>
+            <br>            
+            <!-- span waar het resterende bedrag in komt te staan. -->
+            resultaat: <span id="resultaat"></span>
+        </p>
+    </div>
+</body>
+</html>
