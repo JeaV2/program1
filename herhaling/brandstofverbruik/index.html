@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herhaling eindopdracht</title>
+    <script src="content/js/script.js"></script>
+</head>
+<body>
+    <form action="">
+        <label for="merk">Welk merk auto heeft u?</label><br>
+        <input type="text" name="merk" id="merk" required>
+        <br><br>
+        <label for="type">Welk type auto heeft u?</label><br>
+        <input type="text" name="type" id="type" required>
+        <br><br>
+        <label for="verbruik">Hoeveel verbruikt uw auto? <br> (bv. 1 op 20 betekend op 1 liter brandstof kun je 20 km rijden)</label><br>
+        <input type="number" name="verbruik" id="verbruik" value="1" readonly> op <input type="number" name="bereik" id="bereik" required>
+        <br><br>
+        <label for="afstand">Hoeveel kilometer gaat u rijden?</label><br>
+        <input type="number" name="afstand" id="afstand" required>
+        <br><br>
+        <label for="snelheid">Wat is uw gemiddelde snelheid (in km/u)</label><br>
+        <input type="number" name="snelheid" id="snelheid" required>
+        <br><br>
+        <input type="button" value="Bereken" onclick="bereken()">
+    </form>
+    <p id="resultaat"></p>
+</body>
+</html>
