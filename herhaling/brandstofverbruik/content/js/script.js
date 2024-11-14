@@ -18,10 +18,10 @@ function bereken() {
     } else if (verbruik <= 0 || bereik <= 0 || afstand <= 0) {
         alert("De waarden moeten groter zijn dan 0!");
         return;
-    // Bereken het brandstofverbruik
     } else if ( snelheid <= 0 || snelheid > 120) {
         alert("De snelheid moet tussen 0 en 120 km/u liggen!");
         return;
+    // Bereken het brandstofverbruik
 
     } else {
         let berekeningLiters = (afstand / bereik) * verbruik;
