@@ -1,0 +1,8 @@
+input{
+    display: block;
+}
+#rechthoek{
+    margin: 0px;
+    padding: 0px;
+    line-height: 8px;
+}

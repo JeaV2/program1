@@ -21,8 +21,7 @@ function bereken() {
     } else if ( snelheid <= 0 || snelheid > 120) {
         alert("De snelheid moet tussen 0 en 120 km/u liggen!");
         return;
-    // Bereken het brandstofverbruik
-
+    // Bereken het brandstofverbruik en de duur van de rit
     } else {
         let berekeningLiters = (afstand / bereik) * verbruik;
         let berekeningDuur = afstand / snelheid;
