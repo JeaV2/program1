@@ -1,13 +1,16 @@
+// Genereer een random nummer tussen 1 en 100
 let nummer = Math.floor(Math.random() * 100) + 1;
-console.log(nummer);
 
 function check(){
+    // Definieer variabelen
     let gok = document.getElementById("gok").value;
     let resultaat = document.getElementById("resultaat");
+    // Controleer of de input een getal is
     if (gok == "" || isNaN(gok)){
         resultaat.innerHTML = "Vul een nummer in!";
         return;
     }
+    // Controleer of de gok correct is en geef feedback
     let geraden = false
     while(!geraden){
         if (gok == nummer){
