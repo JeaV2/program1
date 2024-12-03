@@ -11,7 +11,7 @@ for (let i = 0; i < 10; i++) {
     // Geef de div een hoogte en breedte
     div.style.width = '98vw';
     div.style.height = '9.7vh';
-    // Geef de div een border
+    // Geef de div een kleur
     let r = Math.floor(Math.random() * 256);
     let g = Math.floor(Math.random() * 256);
     let b = Math.floor(Math.random() * 256);
