@@ -3,7 +3,7 @@ import os
 def generate_index_html():
     current_dir = os.getcwd()
     current_dir_name = os.path.basename(current_dir)
-    subdirs = [d for d in os.listdir(current_dir) if os.path.isdir(os.path.join(current_dir, d))]
+    subdirs = sorted([d for d in os.listdir(current_dir) if os.path.isdir(os.path.join(current_dir, d))])
 
     with open('index.html', 'w') as f:
         f.write(f'<html>\n<head>\n<title>Index of {current_dir_name}</title>\n</head>\n<body>\n')
