@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="./js/animal_age.js" defer></script>
+    <link href="./css/animal_age.css" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+<div class="grid">
+    <header>
+        <h1>Hoe oud</h1>
+        <h3>is mijn huisdier?</h3>
+        <p class="heading">
+            1 mensenjaar is <input type="text" id="leeftijd"> jaar voor een: <br>
+            <sup>komma getallen moet je met een "." schrijven</sup>
+        </p>
+    </header>
+    <main>
+        <button onclick="leeftijd('hond')">Hond</button>
+        <button onclick="leeftijd('gecko')">Gecko</button>
+        <button onclick="leeftijd('olifant')">Olifant</button>
+        <button onclick="leeftijd('vlieg')">Vlieg</button>
+    </main>
+    <aside><img src="./img/vraagteken.gif" id="img"></aside>
+    <footer>
+        <h2>Resultaat:</h2>
+        <div id="resultaat"></div>
+    </footer>
+</div>
+</body>
+</html>
