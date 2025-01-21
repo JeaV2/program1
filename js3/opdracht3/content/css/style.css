@@ -1,0 +1,19 @@
+#cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000;
+    color: #fff;
+}
+div {
+    text-align: center;
+    margin: 10px;
+    border: #fff 5px solid;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+    line-height: 1.5em;
+}

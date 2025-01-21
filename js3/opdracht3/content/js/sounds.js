@@ -8,7 +8,8 @@ const pop4 = new Audio('content/sfx/pop4.mp3');
 const popSounds = [pop1, pop2, pop3, pop4];
 
 // play pop sfx when a, s, d or f keys are pressed
-document.addEventListener('keydown', function (event) {
+// Stop all sounds when x is pressed
+document.addEventListener('keydown', function keyPress(event) {
     if (event.key === 'a'){
         popSounds[0].play();
     }
@@ -20,5 +21,11 @@ document.addEventListener('keydown', function (event) {
     }
     if (event.key === 'f'){
         popSounds[3].play();
+    }
+    if (event.key === 'x'){
+        for (let i = 0; i < popSounds.length; i++) {
+            popSounds[i].pause();
+            popSounds[i].currentTime = 0;
+        }
     }
 });
