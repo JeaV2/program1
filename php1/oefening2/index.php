@@ -2,4 +2,4 @@
 $mijnNaam = "Jea";
 $mijnLeeftijd = 20;
 
-include_once ("oefening_view.php");
+include_once("view.php");
