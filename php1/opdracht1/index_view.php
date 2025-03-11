@@ -15,8 +15,8 @@
             ik zit in klas <?= $klas; ?>. <br>
             en ik heb deze vakken op de middelbare school gehad zijn:
             <ul>
-                <?php foreach ($leerlijn as $vak): ?>
-                    <li><?= $vak; ?></li>
+                <?php foreach ($vakkenCijfers as $vak => $cijfer): ?>
+                    <li><?= $vak; ?>, <?= $cijfer ?></li>
                 <?php endforeach; ?>
             </ul>
         </div>
