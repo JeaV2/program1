@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Opdracht 3 | Formulier verwerken</title>
+</head>
+<body>
+    <form action="verwerk.php" method="post">
+        <label for="naam">Wat is je naam?:</label>
+        <input type="text" name="naam" id="naam" required>
+        <br> <label for="studentNummer">Wat is je Studentnummer?:</label>
+        <input type="text" name="studentNummer" id="studentNummer" pattern="^\d{6}$" required>
+        <br>
+        <label for="klas">In welke klas zit je?:</label>
+        <input type="text" name="klas" id="klas" pattern="^[A-Za-z][0-9]+[A-Za-z]$" required>
+        <br>
+        <p>Voor welke 4 vakken heb je het hoogste cijfers?</p>
+        <label for="vak1">Vak:</label> <input type="text" name="vak1" id="vak1" required> <label for="cijfer1">cijfer</label>: <input type="number" name="cijfer1" id="cijfer1" min="1.0" max="10.0" step="0.1" required>
+        <br>
+        <label for="vak2">Vak:</label> <input type="text" name="vak2" id="vak2" required> <label for="cijfer2">cijfer</label>: <input type="number" name="cijfer2" id="cijfer2" min="1.0" max="10.0" step="0.1" required>
+        <br>
+        <label for="vak3">Vak:</label> <input type="text" name="vak3" id="vak3" required> <label for="cijfer3">cijfer</label>: <input type="number" name="cijfer3" id="cijfer3" min="1.0" max="10.0" step="0.1" required>
+        <br>
+        <label for="vak4">Vak:</label> <input type="text" name="vak4" id="vak4" required> <label for="cijfer4">cijfer</label>: <input type="number" name="cijfer4" id="cijfer4" min="1.0" max="10.0" step="0.1" required>
+        <br>
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html>
