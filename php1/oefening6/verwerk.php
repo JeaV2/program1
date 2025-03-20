@@ -10,4 +10,4 @@ else {
 
 }
 
-header("Location: index.php?info=".$error);
+header("Location: index.html?info=".$error);
