@@ -13,6 +13,7 @@
         Uw naam is: <?= $naam; ?> <br>
         Uw email is: <?= $email; ?> <br>
         Uw leeftijd is: <?= $leeftijd; ?>
+        Uw geboorte datum is: <?= $datum; ?>
     </p>
 </body>
 </html>
