@@ -12,40 +12,41 @@
     <form action="verwerk.php" method="post">
 
         <?php if (isset($errors)){ ?>
-            <p><?= @$errors['naam'] ?></p>
+            <p style="color: red"><?= @$errors['naam'] ?></p>
         <?php } ?>
         <label for="naam">Wat is je naam?:</label>
         <input type="text" name="naam" id="naam" value="<?= @$naam ?>">
         <br>
 
         <?php if (isset($errors)){ ?>
-            <p><?= @$errors['email'] ?></p>
+            <p style="color: red"><?= @$errors['email'] ?></p>
         <?php } ?>
         <label for="email">Wat is je email-adres?:</label>
         <input type="email" name="email" id="email" value="<?= @$email ?>">
         <br>
 
         <?php if (isset($errors)){ ?>
-            <p><?= @$errors['leeftijd'] ?></p>
+            <p style="color: red"><?= @$errors['leeftijd'] ?></p>
         <?php } ?>
         <label for="leeftijd">Wat is je leeftijd?:</label>
         <input type="number" name="leeftijd" id="leeftijd" value="<?= @$leeftijd ?>">
         <br>
 
         <?php if (isset($errors)){ ?>
-            <p><?= @$errors['datum'] ?></p>
+            <p style="color: red"><?= @$errors['datum'] ?></p>
         <?php } ?>
         <label for="datum">Wat is je geboorte datum?:</label>
         <input type="date" name="datum" id="datum" value="<?= @$datum ?>">
         <br>
 
         <?php if (isset($errors)){ ?>
-            <p><?= @$errors['hobby'] ?></p>
+            <p style="color: red"><?= @$errors['hobby'] ?></p>
         <?php } ?>
         <label for="hobby">Beschrijf je hobby's</label>
         <br>
         <textarea name="hobby" id="hobby" cols="30" rows="10" style="resize: none"><?= @$hobby ?></textarea>
-
+        <br>
+        <br>
         <input type="submit" value="submit">
     </form>
 </body>
