@@ -1,0 +1,17 @@
+select * FROM crud_agenda;
+insert into crud_agenda (id,onderwerp,inhoud,begin_datum,status,eind_datum)
+values (NULL, 'Do random stuff', 'Just do silly stuff :3','2025-12-10','Niet bezig','2077-1-10');
+
+select * FROM crud_agenda;
+insert into crud_agenda (id,onderwerp,inhoud,begin_datum,status,eind_datum)
+values (NULL, 'Get my life together', 'I could try','1-12-10','Never going to start.','9999-1-10');
+
+select * FROM crud_agenda;
+insert into crud_agenda (id,onderwerp,inhoud,begin_datum,status,eind_datum)
+values (NULL, 'Get my life together', 'I could try','1-12-10','Never going to start.','9999-1-10');
+
+update crud_agenda set inhoud = 'Never going to happen' where id = 7;
+select * from crud_agenda;
+
+delete from crud_agenda where id = 10;
+select * from crud_agenda;
