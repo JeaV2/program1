@@ -1,7 +1,7 @@
 import os
 
-# Directories to skip (you can easily add more here)
-SKIP_DIRECTORIES = ['css', 'content', 'js', 'images', 'img', 'media', 'assets', 'fonts',]
+# Directories to skip
+SKIP_DIRECTORIES = ['css', 'content', 'js', 'images', 'img', 'media', 'assets', 'fonts', 'crud']
 
 def has_auto_generated_comment(file_path):
     """Check if the HTML file has the auto-generated comment"""
