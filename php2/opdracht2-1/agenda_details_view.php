@@ -29,9 +29,19 @@
                         <span class="agenda-label">Begindatum:</span>
                         <span class="agenda-value"><?= htmlspecialchars($rij['begin_datum']) ?></span>
                     </div>
+
+                    <div class="agenda-field">
+                        <span class="agenda-label">Status:</span>
+                        <span class="agenda-value"><?= htmlspecialchars($rij['status']) ?></span>
+                    </div>
+
+                    <div class="agenda-field">
+                        <span class="agenda-label">Einddatum:</span>
+                        <span class="agenda-value"><?= htmlspecialchars($rij['eind_datum']) ?></span>
+                    </div>
                     
                     <div class="agenda-actions">
-                        <a href="agenda_detail.php?id=<?= $rij['id'] ?>" class="btn btn-detail">Details</a>
+                        <a href="./" class="btn btn-detail">Terug naar overzicht</a>
                         <a href="agenda_bewerken.php?id=<?= $rij['id'] ?>" class="btn btn-edit">Bewerken</a>
                         <a href="agenda_verwijderen.php?id=<?= $rij['id'] ?>" class="btn btn-delete">Verwijderen</a>
                     </div>
