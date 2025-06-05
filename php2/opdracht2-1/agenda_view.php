@@ -10,9 +10,8 @@
 </head>
 <body>
     <h1>Agenda</h1>
-    
     <div class="agenda-container">
-        <?php if ($aantalRijen > 0) { ?>
+        <?php if ($aantalRijen > 0) {?>
             <?php foreach ($resultaten as $rij) { ?>
                 <div class="agenda-item">
                     <div class="agenda-field">
