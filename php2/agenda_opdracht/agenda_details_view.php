@@ -41,7 +41,7 @@
                     </div>
                     
                     <div class="agenda-actions">
-                        <a href="./" class="btn btn-detail">Terug naar overzicht</a>
+                        <a href="index.php" class="btn btn-detail">Terug naar overzicht</a>
                         <a href="agenda_bewerken.php?id=<?= $rij['id'] ?>" class="btn btn-edit">Bewerken</a>
                         <a href="agenda_verwijderen.php?id=<?= $rij['id'] ?>" class="btn btn-delete">Verwijderen</a>
                     </div>

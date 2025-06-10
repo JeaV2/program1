@@ -41,6 +41,7 @@
                 <p>Geen resultaten gevonden.</p>
             </div>
         <?php } ?>
+        <a href="agenda_toevoegen.php" class="btn btn-add">Toevoegen</a>
     </div>
 </body>
 </html>
