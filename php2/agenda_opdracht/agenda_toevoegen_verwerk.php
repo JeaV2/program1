@@ -1,53 +1,114 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_SERVER['HTTP_REFERER'] = 'https://102710.stu.sd-lab.nl/program1/php2/agenda_opdracht/agenda_toevoegen.php' && $_SESSION['token'] == $_POST['csrf_token']) {
-    $onderwerp = strip_tags(htmlspecialchars($_POST['onderwerp']));
-    $inhoud = strip_tags(htmlspecialchars($_POST['inhoud']));
-    $begin_datum = strip_tags(htmlspecialchars($_POST['begin_datum']));
-    $status = strip_tags(htmlspecialchars($_POST['status']));
-    $eind_datum = strip_tags(htmlspecialchars($_POST['eind_datum']));
+$valid_referer = isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], '102710.stu.sd-lab.nl/program1/php2/agenda_opdracht/') !== false;
 
-    if ($onderwerp === "") {
-        $errors['onderwerp'] = "Een onderwerp voor het agenda-item is verplicht.";
+if (
+    isset($_SESSION['tokenSessie']) &&
+    isset($_POST['tokenVeld']) &&
+    $_SESSION['tokenSessie'] === $_POST['tokenVeld'] &&
+    $_SERVER['REQUEST_METHOD'] === 'POST' &&
+    $valid_referer
+) {
+    $onderwerp = htmlspecialchars(strip_tags($_POST['onderwerp']), ENT_QUOTES, 'UTF-8');
+    $inhoud = htmlspecialchars(strip_tags($_POST['inhoud']), ENT_QUOTES, 'UTF-8');
+    $begin_datum = htmlspecialchars(strip_tags($_POST['begin_datum']), ENT_QUOTES, 'UTF-8');
+    $status = htmlspecialchars(strip_tags($_POST['status']), ENT_QUOTES, 'UTF-8');
+    $eind_datum = htmlspecialchars(strip_tags($_POST['eind_datum']), ENT_QUOTES, 'UTF-8');
+} else {
+    echo "Ongeldige aanvraag of token niet gevonden.";
+    exit;
+}
+
+if ($onderwerp === "") {
+    $errors['onderwerp'] = "Een onderwerp voor het agenda-item is verplicht.";
+}
+
+if ($inhoud === "") {
+    $errors['inhoud'] = "Een inhoud voor het agenda-item is verplicht.";
+}
+
+if ($begin_datum === "") {
+    $errors['begin_datum'] = "Een begin datum voor het agenda-item is verplicht.";
+}
+
+if ($status === "") {
+    $errors['status'] = "Een status voor het agenda-item is verplicht.";
+}
+if ($status !== "Nog niet begonnen" && $status !== "Bezig" && $status !== "Afgerond") {
+    $errors['status'] = "De status moet Nog niet begonnen, Bezig of Afgerond zijn.";
+}
+
+if ($eind_datum === "") {
+    $errors['eind_datum'] = "Een eind datum voor het agenda-item is verplicht.";
+}
+
+// Date validation
+if (!empty($begin_datum)) {
+    // Check if begin_datum is a valid date
+    $begin_date_parts = explode('-', $begin_datum);
+    if (count($begin_date_parts) != 3 || !checkdate($begin_date_parts[1], $begin_date_parts[2], $begin_date_parts[0])) {
+        $errors['begin_datum'] = "Begin datum moet een geldige datum zijn.";
+    } else {
+        $begin_date_obj = new DateTime($begin_datum);
+        $current_year = date('Y');
+        $begin_year = $begin_date_obj->format('Y');
+
+        // Check if begin_datum is in current year
+        if ($begin_year != $current_year) {
+            $errors['begin_datum'] = "Begin datum moet in het huidige jaar zijn ({$current_year}).";
+        }
     }
-    if ($inhoud === "") {
-        $errors['inhoud'] = "Een inhoud voor het agenda-item is verplicht.";
-    }
-    if ($begin_datum === "") {
-        $errors['begin_datum'] = "Een begin datum voor het agenda-item is verplicht.";
-    }
-    if ($status === "") {
-        $errors['status'] = "Een status voor het agenda-item is verplicht.";
-    }
-    if ($eind_datum === "") {
-        $errors['eind_datum'] = "Een eind datum voor het agenda-item is verplicht.";
-    }
-    if (empty($errors)) {
-        require("../crud/config.php");
-        try {
-            $query = "INSERT INTO crud_agenda (onderwerp, inhoud, begin_datum, status, eind_datum) VALUES (:onderwerp, :inhoud, :begin_datum, :status, :eind_datum)";
-            $stmt = $pdo->prepare($query);
-            $stmt -> execute([
-                ':onderwerp' => $onderwerp,
-                ':inhoud' => $inhoud,
-                ':begin_datum' => $begin_datum,
-                ':status' => $status,
-                ':eind_datum' => $eind_datum
-            ]);
-            if ($stmt->rowCount()) {
-                header("Location: index.php");
-                exit;
-            } else {
-                echo "Fout bij het toevoegen.<br>";
-                echo '<a href="./">Terug naar overzicht</a>';
+}
+
+if (!empty($eind_datum)) {
+    // Check if eind_datum is a valid date
+    $eind_date_parts = explode('-', $eind_datum);
+    if (count($eind_date_parts) != 3 || !checkdate($eind_date_parts[1], $eind_date_parts[2], $eind_date_parts[0])) {
+        $errors['eind_datum'] = "Eind datum moet een geldige datum zijn.";
+    } else {
+        $eind_date_obj = new DateTime($eind_datum);
+        $five_years_future = new DateTime('+5 years');
+
+        // Check if end date is not more than 5 years in the future
+        if ($eind_date_obj > $five_years_future) {
+            $errors['eind_datum'] = "Eind datum mag niet meer dan 5 jaar in de toekomst zijn.";
+        }
+
+        // Check if begin_datum is before eind_datum (only if both dates are valid)
+        if (!empty($begin_datum) && !isset($errors['begin_datum']) && isset($begin_date_obj)) {
+            if ($begin_date_obj >= $eind_date_obj) {
+                $errors['eind_datum'] = "Eind datum moet na de begin datum zijn.";
             }
-        } catch (PDOException $e) {
-            echo "Fout bij het toevoegen.<br> Foutmelding: ".$e->getMessage()."<br>";
+        }
+    }
+}
+
+//String validation
+
+
+if (empty($errors)) {
+    require("../crud/config.php");
+    try {
+        $query = "INSERT INTO crud_agenda (onderwerp, inhoud, begin_datum, status, eind_datum) VALUES (:onderwerp, :inhoud, :begin_datum, :status, :eind_datum)";
+        $stmt = $pdo->prepare($query);
+        $stmt -> execute([
+            ':onderwerp' => $onderwerp,
+            ':inhoud' => $inhoud,
+            ':begin_datum' => $begin_datum,
+            ':status' => $status,
+            ':eind_datum' => $eind_datum
+        ]);
+        if ($stmt->rowCount()) {
+            header("Location: index.php");
+            exit;
+        } else {
+            echo "Fout bij het toevoegen.<br>";
             echo '<a href="./">Terug naar overzicht</a>';
         }
-    } else {
-        include_once('agenda_toevoegen_view.php');
+    } catch (PDOException $e) {
+        echo "Fout bij het toevoegen.<br> Foutmelding: ".$e->getMessage()."<br>";
+        echo '<a href="./">Terug naar overzicht</a>';
     }
+} else {
+    include_once('agenda_toevoegen_view.php');
 }

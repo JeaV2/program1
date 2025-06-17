@@ -1,7 +1,7 @@
 <?php
 session_start();
 $token = bin2hex(openssl_random_pseudo_bytes(32));
-$_SESSION['token'] = $token;
+$_SESSION['tokenSessie'] = $token;
 ?>
 <!doctype html>
 <html lang="en">
@@ -40,7 +40,7 @@ $_SESSION['token'] = $token;
                 <?php if (isset($errors['begin_datum'])){ ?>
                     <span class="error-message"><?= htmlspecialchars($errors['begin_datum']) ?></span>
                 <?php } ?>
-                <input type="date" id="begin_datum" name="begin_datum" value="<?= htmlspecialchars($begin_datum ?? '') ?>">
+                <input type="date" id="begin_datum" name="begin_datum" value="<?= $begin_datum ?? date('Y-m-d'); ?>">
             </div>
             
             <div class="form-group">
@@ -63,7 +63,7 @@ $_SESSION['token'] = $token;
                 <input type="date" id="eind_datum" name="eind_datum" value="<?= htmlspecialchars($eind_datum ?? '') ?>">
             </div>
 
-            <input type="hidden" name="token" id="token" value="<?= $token ?>">
+            <input type="hidden" name="tokenVeld" id="token" value="<?= $token ?>">
 
             <div class="form-actions">
                 <input type="submit" value="Toevoegen">
