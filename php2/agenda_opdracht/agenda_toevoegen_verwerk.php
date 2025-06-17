@@ -9,11 +9,11 @@ if (
     $_SERVER['REQUEST_METHOD'] === 'POST' &&
     $valid_referer
 ) {
-    $onderwerp = htmlspecialchars(strip_tags($_POST['onderwerp']), ENT_QUOTES, 'UTF-8');
-    $inhoud = htmlspecialchars(strip_tags($_POST['inhoud']), ENT_QUOTES, 'UTF-8');
-    $begin_datum = htmlspecialchars(strip_tags($_POST['begin_datum']), ENT_QUOTES, 'UTF-8');
-    $status = htmlspecialchars(strip_tags($_POST['status']), ENT_QUOTES, 'UTF-8');
-    $eind_datum = htmlspecialchars(strip_tags($_POST['eind_datum']), ENT_QUOTES, 'UTF-8');
+    $onderwerp = trim(htmlspecialchars(strip_tags($_POST['onderwerp']), ENT_QUOTES, 'UTF-8'));
+    $inhoud = trim(htmlspecialchars(strip_tags($_POST['inhoud']), ENT_QUOTES, 'UTF-8'));
+    $begin_datum = trim(htmlspecialchars(strip_tags($_POST['begin_datum']), ENT_QUOTES, 'UTF-8'));
+    $status = trim(htmlspecialchars(strip_tags($_POST['status']), ENT_QUOTES, 'UTF-8'));
+    $eind_datum = trim(htmlspecialchars(strip_tags($_POST['eind_datum']), ENT_QUOTES, 'UTF-8'));
 } else {
     echo "Ongeldige aanvraag of token niet gevonden.";
     exit;
