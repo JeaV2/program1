@@ -1,6 +1,11 @@
 <?php
 
-$valid_referer = isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], '102710.stu.sd-lab.nl/program1/php2/agenda_opdracht/') !== false;
+session_start();
+
+$valid_referer = isset($_SERVER['HTTP_REFERER']) && (
+    strpos($_SERVER['HTTP_REFERER'], '127.0.0.1:5500/agenda_opdracht/') !== false ||
+    strpos($_SERVER['HTTP_REFERER'], '102710.stu.sd-lab.nl/program1/php2/agenda_opdracht/') !== false
+);
 
 if (
     isset($_SESSION['tokenSessie']) &&
@@ -16,15 +21,20 @@ if (
     $eind_datum = trim(htmlspecialchars(strip_tags($_POST['eind_datum']), ENT_QUOTES, 'UTF-8'));
 } else {
     echo "Ongeldige aanvraag of token niet gevonden.";
+    echo '<a href="./">Terug naar overzicht</a>';
     exit;
 }
 
 if ($onderwerp === "") {
     $errors['onderwerp'] = "Een onderwerp voor het agenda-item is verplicht.";
+} if (strlen($onderwerp) > 100) {
+    $errors['onderwerp'] = "Onderwerp mag niet langer zijn dan 100 tekens.";
 }
 
 if ($inhoud === "") {
     $errors['inhoud'] = "Een inhoud voor het agenda-item is verplicht.";
+} if (strlen($inhoud) > 100) {
+    $errors['inhoud'] = "Inhoud mag niet langer zijn dan 100 tekens.";
 }
 
 if ($begin_datum === "") {
@@ -76,7 +86,7 @@ if (!empty($eind_datum)) {
 
         // Check if begin_datum is before eind_datum (only if both dates are valid)
         if (!empty($begin_datum) && !isset($errors['begin_datum']) && isset($begin_date_obj)) {
-            if ($begin_date_obj >= $eind_date_obj) {
+            if ($begin_date_obj > $eind_date_obj) {
                 $errors['eind_datum'] = "Eind datum moet na de begin datum zijn.";
             }
         }
