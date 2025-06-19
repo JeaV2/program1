@@ -1,3 +1,6 @@
+<?php
+$resultaat = $_GET['resultaat'] ?? "";
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,6 +14,17 @@
 <body>
     <h1>Agenda</h1>
     <div class="agenda-container">
+        <?php
+        if ($resultaat !== "") { 
+            if ($resultaat == 1) {
+                echo "<div class='success'>Het agenda item is succesvol verwijderd.</div>";
+            } else if ($resultaat == 2) {
+                echo "<div class='error'>Het agenda item kon niet worden verwijderd, probeer het opnieuw.</div>";
+            } else {
+                echo "<div class='error'>" . htmlspecialchars($resultaat) . "</div>";
+            }
+        }
+        ?>
         <?php if ($aantalRijen > 0) {?>
             <?php foreach ($resultaten as $rij) { ?>
                 <div class="agenda-item">
