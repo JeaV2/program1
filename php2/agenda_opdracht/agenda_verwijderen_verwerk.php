@@ -19,4 +19,4 @@ try {
     $resultaat = "Er is een fout opgetreden: " . $e->getMessage();
 }
 
-header("Location: index.php?resultaat=" . urlencode($resultaat));
+header("Location: agenda.php?resultaat=" . urlencode($resultaat));

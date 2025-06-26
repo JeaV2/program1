@@ -108,7 +108,7 @@ if (empty($errors)) {
             ':id' => $id
         ]);
         if ($stmt->rowCount()) {
-            header("Location: index.php");
+            header("Location: agenda.php");
             exit;
         } else {
             echo "Fout bij het toevoegen.<br>";

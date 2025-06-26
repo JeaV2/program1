@@ -68,7 +68,7 @@ $_SESSION['tokenSessie'] = $token;
             <div class="form-actions">
                 <input type="submit" value="Toevoegen">
                 <div class="back-link">
-                    <a href="index.php" class="btn btn-detail">Terug naar overzicht</a>
+                    <a href="agenda.php" class="btn btn-detail">Terug naar overzicht</a>
                 </div>
             </div>
         </form>

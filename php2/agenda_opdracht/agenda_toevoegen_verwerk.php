@@ -109,7 +109,7 @@ if (empty($errors)) {
             ':eind_datum' => $eind_datum
         ]);
         if ($stmt->rowCount()) {
-            header("Location: index.php");
+            header("Location: agenda.php");
             exit;
         } else {
             echo "Fout bij het toevoegen.<br>";
