@@ -1,4 +1,5 @@
 <?php
+require_once("session_check.php");
 
 $id = $_GET['id'] ?? null;
 if (empty($id)) {

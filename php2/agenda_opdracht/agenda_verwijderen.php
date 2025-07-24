@@ -1,8 +1,6 @@
 <?php
 
-
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+require_once("session_check.php");
 require '../crud/config.php';
 
 // Get the ID parameter from URL
